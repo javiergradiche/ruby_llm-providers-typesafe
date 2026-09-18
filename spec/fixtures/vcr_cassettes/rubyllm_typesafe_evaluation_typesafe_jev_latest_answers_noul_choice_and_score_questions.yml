@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<TYPESAFE_API_BASE>/v1/systemone"
+    body:
+      encoding: UTF-8
+      string: '{"state":"Help! My payouts have been failing for 3 days.","model":"jev-latest","questions":{"urgent":{"type":"noul","instructions":"Does
+        this convey urgency?"},"team":{"type":"choice","instructions":"Which team
+        should handle this?","criteria":{"billing":"Payments, invoicing, refunds","technical":"Bugs,
+        outages, integrations","sales":"Pricing, upgrades, new accounts"}},"frustration":{"type":"score","instructions":"How
+        frustrated is the customer?","criteria":["Calm","Frustrated","Very angry"]}}}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Authorization:
+      - Bearer <AUTH_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Sep 2026 12:23:43 GMT
+      Server:
+      - istio-envoy
+      Content-Length:
+      - '405'
+      Content-Type:
+      - application/json
+      X-Typesafe-Request-Id:
+      - req_01a0b479007b7d67ae86981d477509c0
+      X-Envoy-Upstream-Service-Time:
+      - '100'
+    body:
+      encoding: UTF-8
+      string: '{"model":"jev-1.13.0","answers":{"urgent":{"type":"noul","noul":0.95},"team":{"type":"choice","choice":"billing","confidence":0.77,"probabilities":{"technical":0.15,"billing":0.85,"sales":0.0}},"frustration":{"type":"score","score":1.05,"confidence":0.93,"legend":{"0":"Calm","1":"Frustrated","2":"Very
+        angry"},"probabilities":{"0":0.0,"1":0.95,"2":0.05}}},"usage":{"input_tokens":402,"output_tokens":70}}'
+  recorded_at: Fri, 18 Sep 2026 12:23:44 GMT
+recorded_with: VCR 6.4.0

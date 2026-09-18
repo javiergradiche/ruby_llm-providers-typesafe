@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'dotenv/load'
+require 'fileutils'
+
+require 'vcr'
+require 'ruby_llm/providers/typesafe'
+require 'webmock/rspec'
+
+Dir[File.expand_path('support/**/*.rb', __dir__)].each { |file| require file }
+
+RSpec.configure do |config|
+  config.disable_monkey_patching!
+  config.expect_with(:rspec) { |expectations| expectations.syntax = :expect }
+  config.order = :random
+  Kernel.srand config.seed
+
+  config.around(:each, :live) do |example|
+    cassette_name = example.full_description.downcase.gsub(/[^a-z0-9]+/, '_').delete_prefix('_').delete_suffix('_')
+    cassette_path = File.join(VCR.configuration.cassette_library_dir, "#{cassette_name}.yml")
+
+    VCR.use_cassette(cassette_name) { example.run }
+    FileUtils.rm_f(cassette_path) if example.exception
+  end
+end

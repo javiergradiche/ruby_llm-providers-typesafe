@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+bundle install
+[ -f .env ] || cp .env.example .env

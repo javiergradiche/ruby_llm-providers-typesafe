@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<TYPESAFE_API_BASE>/v1/systemone"
+    body:
+      encoding: UTF-8
+      string: '{"state":{"query":"What is the capital of the United States?","documents":["Carson
+        City is the capital of Nevada.","Washington, D.C. is the capital of the United
+        States."]},"model":"jev-latest","questions":{"document_0":{"type":"noul","instructions":"Does
+        `documents[0]` help answer `query`?","criteria":{"true":"The document contains
+        information that answers or directly addresses the query.","false":"The document
+        is off topic or only shares words with the query."}},"document_1":{"type":"noul","instructions":"Does
+        `documents[1]` help answer `query`?","criteria":{"true":"The document contains
+        information that answers or directly addresses the query.","false":"The document
+        is off topic or only shares words with the query."}}}}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.4
+      Authorization:
+      - Bearer <AUTH_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Sep 2026 12:23:44 GMT
+      Server:
+      - istio-envoy
+      Content-Length:
+      - '164'
+      Content-Type:
+      - application/json
+      X-Typesafe-Request-Id:
+      - req_01a0b47903987843bd07f5fc60a186b8
+      X-Envoy-Upstream-Service-Time:
+      - '88'
+    body:
+      encoding: UTF-8
+      string: '{"model":"jev-1.13.0","answers":{"document_0":{"type":"noul","noul":0.03},"document_1":{"type":"noul","noul":0.99}},"usage":{"input_tokens":430,"output_tokens":40}}'
+  recorded_at: Fri, 18 Sep 2026 12:23:44 GMT
+recorded_with: VCR 6.4.0
