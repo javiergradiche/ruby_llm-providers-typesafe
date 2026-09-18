@@ -30,15 +30,15 @@ evaluation = RubyLLM::Typesafe.evaluate("Help! My payouts have been failing for 
   q.score :frustration, "How frustrated is the customer?", ["Calm", "Frustrated", "Very angry"]
 end
 
-evaluation[:urgent].probability    # => 0.92
+evaluation[:urgent].probability    # => 0.95
 evaluation[:urgent].yes?           # => true
-evaluation[:team].option           # => :technical
-evaluation[:team].probabilities    # => {billing: 0.08, technical: 0.85, sales: 0.07}
-evaluation[:team].confidence       # => 0.82
-evaluation[:frustration].score     # => 1.6
-evaluation[:frustration].level     # => "Very angry"
+evaluation[:team].option           # => :billing
+evaluation[:team].probabilities    # => {technical: 0.15, billing: 0.85, sales: 0.0}
+evaluation[:team].confidence       # => 0.77
+evaluation[:frustration].score     # => 1.05
+evaluation[:frustration].level     # => "Frustrated"
 evaluation.model                   # => "jev-1.13.0"
-evaluation.cost.total              # => 0.0000131
+evaluation.cost.total              # => 0.000016884
 ```
 
 There are three question types:
