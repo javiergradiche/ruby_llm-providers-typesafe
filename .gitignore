@@ -5,3 +5,4 @@
 /tmp/
 *.gem
 .env
+/Gemfile.lock

@@ -6,7 +6,7 @@ VCR.configure do |config|
   config.default_cassette_options = { record: ENV['CI'] ? :none : :once }
   config.allow_http_connections_when_no_cassette = true
   config.filter_sensitive_data('<TYPESAFE_API_KEY>') { ENV.fetch('TYPESAFE_API_KEY', nil) }
-  config.filter_sensitive_data('<TYPESAFE_API_BASE>') { ENV.fetch('TYPESAFE_API_BASE', nil) }
+  config.filter_sensitive_data('<TYPESAFE_API_BASE>') { ENV.fetch('TYPESAFE_API_BASE', 'https://api.typesafe.ai') }
 
   config.before_record do |interaction|
     next unless interaction.request.headers['Authorization']

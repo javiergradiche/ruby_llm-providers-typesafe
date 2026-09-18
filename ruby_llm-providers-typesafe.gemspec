@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'TypeSafe System One models, such as Jev, for RubyLLM.'
   spec.description = 'Typed judgments and reranking with the TypeSafe Jev model through RubyLLM.'
-  spec.homepage = 'https://github.com/extraeai/ruby_llm-providers-typesafe'
+  spec.homepage = 'https://github.com/javiergradiche/ruby_llm-providers-typesafe'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.1'
 
