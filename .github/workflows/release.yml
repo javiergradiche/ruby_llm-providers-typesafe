@@ -27,7 +27,7 @@ jobs:
         run: gem build ruby_llm-providers-typesafe.gemspec
 
       - name: Configure RubyGems trusted publishing
-        uses: rubygems/configure-rubygems-credentials@v1
+        uses: rubygems/configure-rubygems-credentials@v2.1.0
 
       - name: Publish to RubyGems
         run: gem push ruby_llm-providers-typesafe-*.gem
